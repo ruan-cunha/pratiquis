@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF--8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversário, Prates!</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&family=Roboto+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
 
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -46,17 +46,12 @@
             line-height: 1.6;
         }
 
-        .toothless {
-            font-family: 'Roboto Mono', monospace;
-            white-space: pre;
-            font-size: 10px;
-            line-height: 1.2;
-            color: #ffffff;
+        /* Estilo para o Canvas */
+        #banguelaCanvas {
             background-color: #333;
-            padding: 20px;
             border-radius: 10px;
             border: 2px dashed #ffff00;
-            overflow-x: auto;
+            max-width: 100%;
         }
 
         img {
@@ -102,17 +97,9 @@
 
         <p>Parabéns! Você sobreviveu a mais uma volta ao redor do sol. Impressionante, considerando suas escolhas de vida.</p>
 
-        <p>Para comemorar esta data magnífica, aqui está um desenho super realista do Banguela. Foi feito à mão, pixel por pixel (mentira, copiei da internet).</p>
+        <p>Para comemorar esta data magnífica, aqui está uma obra de arte digital do Banguela, renderizada em tempo real pelo seu navegador. Chique, né?</p>
 
-        <div class="toothless">
-             ,     ,
-            (\o_o/)
-             ( . . )
-           ,-/===\-,
-          | | | | | |
-          | | | | | |
-          \WWWWWWWWW/
-        </div>
+        <canvas id="banguelaCanvas" width="400" height="350"></canvas>
 
         <h2>Coisas que te desejamos neste dia:</h2>
         <ul>
@@ -128,6 +115,85 @@
 
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="button">Um presente especial pra você! (Não é vírus, confia)</a>
     </div>
+
+    <script>
+        // Espera a página carregar para começar a desenhar
+        window.onload = function() {
+            const canvas = document.getElementById('banguelaCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Cor do Banguela
+            const preto = '#1c1c1c';
+            const verdeOlho = '#98ff98';
+
+            // Função para desenhar arcos (reutilizável)
+            function drawArc(x, y, radius, startAngle, endAngle, color) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius, startAngle, endAngle);
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
+            
+            // Função para desenhar linhas (reutilizável)
+            function drawLine(moveToX, moveToY, lineToX, lineToY, color = preto) {
+                ctx.beginPath();
+                ctx.moveTo(moveToX, moveToY);
+                ctx.lineTo(lineToX, lineToY);
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 4;
+                ctx.stroke();
+            }
+
+            // Cabeça
+            drawArc(200, 180, 100, 0, 2 * Math.PI, preto);
+
+            // Olhos
+            // Esquerdo
+            ctx.beginPath();
+            ctx.ellipse(155, 160, 30, 45, Math.PI / 1.5, 0, 2 * Math.PI);
+            ctx.fillStyle = verdeOlho;
+            ctx.fill();
+            // Pupila Esquerda
+            drawArc(165, 170, 10, 0, 2 * Math.PI, 'black');
+
+            // Direito
+            ctx.beginPath();
+            ctx.ellipse(245, 160, 30, 45, Math.PI / -1.5, 0, 2 * Math.PI);
+            ctx.fillStyle = verdeOlho;
+            ctx.fill();
+            // Pupila Direita
+            drawArc(235, 170, 10, 0, 2 * Math.PI, 'black');
+
+
+            // Orelhas (chifres?)
+            // Esquerda
+            ctx.beginPath();
+            ctx.moveTo(110, 120);
+            ctx.lineTo(130, 40);
+            ctx.lineTo(170, 100);
+            ctx.fillStyle = preto;
+            ctx.fill();
+
+            // Direita
+            ctx.beginPath();
+            ctx.moveTo(290, 120);
+            ctx.lineTo(270, 40);
+            ctx.lineTo(230, 100);
+            ctx.fillStyle = preto;
+            ctx.fill();
+            
+            // Narinas
+            drawLine(190, 220, 185, 230, '#4a4a4a');
+            drawLine(210, 220, 215, 230, '#4a4a4a');
+
+            // Sorriso
+            ctx.beginPath();
+            ctx.arc(200, 240, 40, 0.2 * Math.PI, 0.8 * Math.PI);
+            ctx.strokeStyle = '#4a4a4a';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        };
+    </script>
 
 </body>
 </html>
