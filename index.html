@@ -1,251 +1,214 @@
 <!DOCTYPE html>
- <html lang="pt-br">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Aniversário, Prates!</title>
-  <style>
-   @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
- 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Prates!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
 
-   body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #ff00ff; /* Rosa choque */
-    color: #ffff00; /* Amarelo */
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    overflow-x: hidden;
-    background-image: url('https://i.giphy.com/media/3oKIPu2g0r4v2TjImA/giphy.gif'); /* Fundo psicodélico */
-    background-size: cover;
-   }
- 
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ff00ff; /* Rosa choque */
+            color: #ffff00; /* Amarelo */
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            background-image: url('https://i.giphy.com/media/3oKIPu2g0r4v2TjImA/giphy.gif'); /* Fundo psicodélico */
+            background-size: cover;
+        }
 
-   .container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 5px solid #00ffff; /* Ciano */
-    border-radius: 15px;
-    padding: 20px;
-    margin: auto;
-    max-width: 800px;
-   }
- 
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 5px solid #00ffff; /* Ciano */
+            border-radius: 15px;
+            padding: 20px;
+            margin: auto;
+            max-width: 800px;
+            position: relative;
+            z-index: 10; /* Garante que o conteúdo principal fique na frente */
+        }
 
-   h1 {
-    font-size: 4em;
-    text-transform: uppercase;
-    text-shadow: 3px 3px #00ffff, -3px -3px #ff0000; /* Sombra 3D */
-    animation: blink 1s infinite;
-   }
- 
+        h1 {
+            font-size: 4em;
+            text-transform: uppercase;
+            text-shadow: 3px 3px #00ffff, -3px -3px #ff0000; /* Sombra 3D */
+            animation: blink 1s infinite;
+        }
 
-   @keyframes blink {
-    50% {
-     opacity: 0.5;
-    }
-   }
- 
+        @keyframes blink {
+            50% {
+                opacity: 0.5;
+            }
+        }
 
-   p {
-    font-size: 1.5em;
-    line-height: 1.6;
-   }
- 
+        p {
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
 
-   /* Estilo para o Canvas */
-   #banguelaCanvas {
-    background-color: #333;
-    border-radius: 10px;
-    border: 2px dashed #ffff00;
-    max-width: 100%;
-   }
- 
+        #banguelaCanvas {
+            background-color: #333;
+            border-radius: 10px;
+            border: 2px dashed #ffff00;
+            max-width: 100%;
+        }
 
-   img {
-    max-width: 100%;
-    height: auto;
-    border: 5px ridge #00ff00; /* Verde limão */
-    margin-bottom: 15px;
-   }
- 
+        .random-image {
+            position: fixed; /* Posição fixa na tela */
+            max-width: 150px; /* Tamanho máximo para não poluir muito */
+            height: auto;
+            border: 4px ridge #00ff00;
+            z-index: 1; /* Fica atrás do container principal */
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+        }
 
-   .button {
-    background-color: #00ff00; /* Verde limão */
-    color: #000000;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    text-decoration: none;
-    border: 3px solid #000000;
-    border-radius: 10px;
-    display: inline-block;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: transform 0.2s;
-   }
- 
+        .button {
+            background-color: #00ff00; /* Verde limão */
+            color: #000000;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border: 3px solid #000000;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
 
-   .button:hover {
-    transform: scale(1.1) rotate(5deg);
-   }
- 
+        .button:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
 
-   marquee {
-    font-size: 2em;
-    color: #ffffff;
-    background-color: #ff0000; /* Vermelho */
-    padding: 10px;
-    margin: 20px 0;
-   }
- 
+        marquee {
+            font-size: 2em;
+            color: #ffffff;
+            background-color: #ff0000; /* Vermelho */
+            padding: 10px;
+            margin: 20px 0;
+        }
 
-  </style>
- </head>
- <body>
- 
+    </style>
+</head>
+<body>
 
-  <audio controls autoplay loop style="display: none;">
-   <source src="jigsaw.mp3" type="audio/mpeg">
-   Seu navegador não suporta o elemento de áudio.
-  </audio>
- 
+    <div class="image-container">
+        <img src="malenia.png" alt="Malenia" class="random-image">
+        <img src="banguela.png" alt="Banguela" class="random-image">
+        <img src="cyberpunk.png" alt="Cyberpunk" class="random-image">
+        <img src="lol.png" alt="Logo de LoL" class="random-image">
+        <img src="https://media.tenor.com/g21_21I2j4YAAAAC/funny-owl-gif.gif" alt="Coruja" class="random-image">
+        <img src="https://i.giphy.com/media/TfseOfhwd6BJC/giphy.gif" alt="Gato dançando" class="random-image">
+    </div>
 
-  <div class="container">
-   <marquee>*** ALERTA DE ANIVERSARIANTE!!! CUIDADO, O PRATES ESTÁ MAIS VELHO HOJE! ***</marquee>
- 
+    <audio controls autoplay loop style="display: none;">
+        <source src="jigsaw.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
 
-   <img src="malenia.png" alt="png">
- 
+    <div class="container">
+        <marquee>*** ALERTA DE ANIVERSARIANTE!!! CUIDADO, O PRATES ESTÁ MAIS VELHO HOJE! ***</marquee>
 
-   <h1>Feliz Aniversário, Prates!</h1>
- 
+        <h1>Feliz Aniversário, Prates!</h1>
 
-   <p>Parabéns! Você sobreviveu a mais uma volta ao redor do sol. Impressionante, considerando suas escolhas de vida.</p>
- 
+        <p>Parabéns! Você sobreviveu a mais uma volta ao redor do sol. Impressionante, considerando suas escolhas de vida.</p>
 
-   <p>Para comemorar esta data magnífica, aqui está uma obra de arte digital do Banguela, renderizada em tempo real pelo seu navegador. Zika se pá?? Dei o meu melhor rsrsrs</p>
- 
+        <p>Para comemorar esta data magnífica, aqui está uma obra de arte digital do Banguela, renderizada em tempo real pelo seu navegador. Zika se pá?? Dei o meu melhor rsrsrs</p>
 
-   <canvas id="banguelaCanvas" width="400" height="350"></canvas>
- 
+        <canvas id="banguelaCanvas" width="400" height="350"></canvas>
 
-   <img src="banguela.png" alt="Banguela">
- 
+        <h2>Coisas que te desejamos neste dia:</h2>
+        <ul>
+            <li>Que sua dores nas costas pós basquete seja passageira.</li>
+            <li>Que você encontre o lado frio do travesseiro em todas as noites.</li>
+            <li>Que existam muitos vinhos secos para você no mundo.</li>
+            <li>Muitos anos de vida, mas só se vc quiser é claro.</li>
+        </ul>
 
-   <h2>Coisas que te desejamos neste dia:</h2>
-   <ul>
-    <li>Que sua dores nas costas pós basquete seja passageira.</li>
-    <li>Que você encontre o lado frio do travesseiro em todas as noites.</li>
-    <li>Que existam muitos vinhos secos para você no mundo.</li>
-    <li>Muitos anos de vida, mas só se vc quiser é claro.</li>
-   </ul>
- 
+        <p>Esperamos que você tenha um dia tão incrível quanto seu amigão ruan da cunha isabelis.</p>
 
-   <img src="cyberpunkK.png" alt="Cyberpunk">
- 
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="button">Um presente especial pra você! (Não é vírus, confia)</a>
+    </div>
 
-   <img src="https://i.giphy.com/media/TfseOfhwd6BJC/giphy.gif" alt="Gato dançando de forma estranha">
- 
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('banguelaCanvas');
+            const ctx = canvas.getContext('2d');
 
-   <p>Esperamos que você tenha um dia tão incrível quanto seu amigão ruan da cunha isabelis.</p>
- 
+            const preto = '#1c1c1c';
+            const verdeOlho = '#98ff98';
 
-   <img src="lol.png" alt="Coruja">
- 
+            function drawArc(x, y, radius, startAngle, endAngle, color) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius, startAngle, endAngle);
+                ctx.fillStyle = color;
+                ctx.fill();
+            }
 
-   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="button">Um presente especial pra você! (Não é vírus, confia)</a>
-  </div>
- 
+            function drawLine(moveToX, moveToY, lineToX, lineToY, color = preto) {
+                ctx.beginPath();
+                ctx.moveTo(moveToX, moveToY);
+                ctx.lineTo(lineToX, lineToY);
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 4;
+                ctx.stroke();
+            }
 
-  <script>
-   // Espera a página carregar para começar a desenhar
-   window.onload = function() {
-    const canvas = document.getElementById('banguelaCanvas');
-    const ctx = canvas.getContext('2d');
- 
+            drawArc(200, 180, 100, 0, 2 * Math.PI, preto);
+            ctx.beginPath();
+            ctx.ellipse(155, 160, 30, 45, Math.PI / 1.5, 0, 2 * Math.PI);
+            ctx.fillStyle = verdeOlho;
+            ctx.fill();
+            drawArc(165, 170, 10, 0, 2 * Math.PI, 'black');
+            ctx.beginPath();
+            ctx.ellipse(245, 160, 30, 45, Math.PI / -1.5, 0, 2 * Math.PI);
+            ctx.fillStyle = verdeOlho;
+            ctx.fill();
+            drawArc(235, 170, 10, 0, 2 * Math.PI, 'black');
+            ctx.beginPath();
+            ctx.moveTo(110, 120);
+            ctx.lineTo(130, 40);
+            ctx.lineTo(170, 100);
+            ctx.fillStyle = preto;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(290, 120);
+            ctx.lineTo(270, 40);
+            ctx.lineTo(230, 100);
+            ctx.fillStyle = preto;
+            ctx.fill();
+            drawLine(190, 220, 185, 230, '#4a4a4a');
+            drawLine(210, 220, 215, 230, '#4a4a4a');
+            ctx.beginPath();
+            ctx.arc(200, 240, 40, 0.2 * Math.PI, 0.8 * Math.PI);
+            ctx.strokeStyle = '#4a4a4a';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            const images = document.querySelectorAll('.random-image');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
 
-    // Cor do Banguela
-    const preto = '#1c1c1c';
-    const verdeOlho = '#98ff98';
- 
+            images.forEach(image => {
+                const top = Math.random() * (window.innerHeight - 200); 
+                image.style.top = `${top}px`;
 
-    // Função para desenhar arcos (reutilizável)
-    function drawArc(x, y, radius, startAngle, endAngle, color) {
-     ctx.beginPath();
-     ctx.arc(x, y, radius, startAngle, endAngle);
-     ctx.fillStyle = color;
-     ctx.fill();
-    }
- 
+                
+                if (Math.random() > 0.5) {
+                    const left = Math.random() * (containerRect.left - 150);
+                    image.style.left = `${left}px`;
+                } else {
+                    const right = Math.random() * (window.innerWidth - containerRect.right - 150);
+                    image.style.right = `${right}px`;
+                }
+                
+                const rotation = Math.random() * 90 - 45; 
+                image.style.transform = `rotate(${rotation}deg)`;
+            });
+        };
+    </script>
 
-    // Função para desenhar linhas (reutilizável)
-    function drawLine(moveToX, moveToY, lineToX, lineToY, color = preto) {
-     ctx.beginPath();
-     ctx.moveTo(moveToX, moveToY);
-     ctx.lineTo(lineToX, lineToY);
-     ctx.strokeStyle = color;
-     ctx.lineWidth = 4;
-     ctx.stroke();
-    }
- 
-
-    // Cabeça
-    drawArc(200, 180, 100, 0, 2 * Math.PI, preto);
- 
-
-    // Olhos
-    // Esquerdo
-    ctx.beginPath();
-    ctx.ellipse(155, 160, 30, 45, Math.PI / 1.5, 0, 2 * Math.PI);
-    ctx.fillStyle = verdeOlho;
-    ctx.fill();
-    // Pupila Esquerda
-    drawArc(165, 170, 10, 0, 2 * Math.PI, 'black');
- 
-
-    // Direito
-    ctx.beginPath();
-    ctx.ellipse(245, 160, 30, 45, Math.PI / -1.5, 0, 2 * Math.PI);
-    ctx.fillStyle = verdeOlho;
-    ctx.fill();
-    // Pupila Direita
-    drawArc(235, 170, 10, 0, 2 * Math.PI, 'black');
- 
-
- 
-
-    // Orelhas (chifres?)
-    // Esquerda
-    ctx.beginPath();
-    ctx.moveTo(110, 120);
-    ctx.lineTo(130, 40);
-    ctx.lineTo(170, 100);
-    ctx.fillStyle = preto;
-    ctx.fill();
- 
-
-    // Direita
-    ctx.beginPath();
-    ctx.moveTo(290, 120);
-    ctx.lineTo(270, 40);
-    ctx.lineTo(230, 100);
-    ctx.fillStyle = preto;
-    ctx.fill();
- 
-
-    // Narinas
-    drawLine(190, 220, 185, 230, '#4a4a4a');
-    drawLine(210, 220, 215, 230, '#4a4a4a');
- 
-
-    // Sorriso
-    ctx.beginPath();
-    ctx.arc(200, 240, 40, 0.2 * Math.PI, 0.8 * Math.PI);
-    ctx.strokeStyle = '#4a4a4a';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-   };
-  </script>
- 
-
- </body>
- </html>
+</body>
+</html>
