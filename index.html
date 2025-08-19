@@ -14,8 +14,45 @@
             text-align: center;
             margin: 0;
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
+            background-image: url('https://i.giphy.com/media/3oKIPu2g0r4v2TjImA/giphy.gif');
             background-size: cover;
+        }
+
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #start-button {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 2em;
+            padding: 20px 40px;
+            cursor: pointer;
+            border: 5px solid #00ff00;
+            background: #1c1c1c;
+            color: #ffff00;
+            animation: start-blink 1.5s infinite;
+            text-align: center;
+        }
+        
+        @keyframes start-blink {
+            50% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         .container {
@@ -33,10 +70,10 @@
             font-size: 4em;
             text-transform: uppercase;
             text-shadow: 3px 3px #00ffff, -3px -3px #ff0000;
-            animation: blink 1s infinite;
+            animation: text-blink 1s infinite;
         }
 
-        @keyframes blink {
+        @keyframes text-blink {
             50% {
                 opacity: 0.5;
             }
@@ -56,9 +93,11 @@
 
         .random-image {
             position: fixed; 
-            max-width: 300px; 
-            height: auto;     
+            width: 150px; 
+            height: auto; 
+            border: 4px ridge #00ff00;
             z-index: 1; 
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
         }
 
         .button {
@@ -86,128 +125,97 @@
             padding: 10px;
             margin: 20px 0;
         }
-
     </style>
 </head>
 <body>
 
-    <div class="image-container">
-        <img src="malenia.png" alt="blade of n sei oq" class="random-image">
-        <img src="banguela.png" alt="ai papai" class="random-image">
-        <img src="cyberpunk.png" alt="i really wanna stay" class="random-image">
-        <img src="lol.png" alt="vc" class="random-image">
-        <img src="radiohead.png" alt="ela olha de volta" class="random-image">
-        <img src="quirrel.png" alt="slk" class="random-image">
-        <img src="brino.png" alt="Prates ama muito o brino <3" class="random-image">
-        <img src="kyoko.png" alt="ai papai" class="random-image">
-        <img src="agua.png" alt="Agua '-'" class="random-image">
-        <img src="superman.png" alt="punkrocker e tals" class="random-image">
-        <img src="edward.png" alt="fuls metas alchemis" class="random-image">
-        
+    <div id="start-screen">
+        <button id="start-button">CLIQUE PARA INICIAR A EXPERIÊNCIA PRATES</button>
     </div>
 
-    <audio controls autoplay loop style="display: none;">
-        <source src="jigsaw.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
+    <div id="main-content" class="hidden">
+        <div class="image-container">
+            <img src="malenia.png" alt="blade of n sei oq" class="random-image">
+            <img src="banguela.png" alt="ai papai" class="random-image">
+            <img src="cyberpunk.png" alt="i really wanna stay" class="random-image">
+            <img src="lol.png" alt="vc" class="random-image">
+            <img src="radiohead.png" alt="ela olha de volta" class="random-image">
+            <img src="quirrel.png" alt="slk" class="random-image">
+            <img src="brino.png" alt="Prates ama muito o brino <3" class="random-image">
+            <img src="kyoko.png" alt="ai papai" class="random-image">
+            <img src="agua.png" alt="Agua '-'" class="random-image">
+            <img src="superman.png" alt="punkrocker e tals" class="random-image">
+            <img src="edward.png" alt="fuls metas alchemis" class="random-image">
+        </div>
 
-    <div class="container">
-        <marquee>*** ALERTA DE ANIVERSARIANTE!!! CUIDADO, O PRATES ESTÁ MAIS VELHO HOJE! ***</marquee>
+        <audio id="background-music" loop>
+            <source src="jigsaw.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
 
-        <h1>Feliz Aniversário, Prates!</h1>
-
-        <p>Parabéns! Você sobreviveu a mais uma volta ao redor do sol. Impressionante, considerando suas escolhas de vida.</p>
-
-        <p>Para comemorar esta data magnífica, aqui está uma obra de arte digital do Banguela, renderizada em tempo real pelo seu navegador. Zika se pá?? Dei o meu melhor rsrsrs</p>
-
-        <canvas id="banguelaCanvas" width="400" height="350"></canvas>
-
-        <h2>Coisas que te desejamos neste dia:</h2>
-        <ul>
-            <li>Que sua dores nas costas pós basquete seja passageira.</li>
-            <li>Que você encontre o lado frio do travesseiro em todas as noites.</li>
-            <li>Que existam muitos vinhos secos para você no mundo.</li>
-            <li>Muitos anos de vida, mas só se vc quiser é claro.</li>
-        </ul>
-
-        <p>Esperamos que você tenha um dia tão incrível quanto seu amigão ruan da cunha isabelis.</p>
-
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="button">Um presente especial pra você! (Não é vírus, confia)</a>
+        <div class="container">
+            <marquee>*** ALERTA DE ANIVERSARIANTE!!! CUIDADO, O PRATES ESTÁ MAIS VELHO HOJE! ***</marquee>
+            <h1>Feliz Aniversário, Prates!</h1>
+            <p>Parabéns! Você sobreviveu a mais uma volta ao redor do sol. Impressionante, considerando suas escolhas de vida.</p>
+            <p>Para comemorar esta data magnífica, aqui está uma obra de arte digital do Banguela, renderizada em tempo real pelo seu navegador. Zika se pá?? Dei o meu melhor rsrsrs</p>
+            <canvas id="banguelaCanvas" width="400" height="350"></canvas>
+            <h2>Coisas que te desejamos neste dia:</h2>
+            <ul>
+                <li>Que sua dores nas costas pós basquete seja passageira.</li>
+                <li>Que você encontre o lado frio do travesseiro em todas as noites.</li>
+                <li>Que existam muitos vinhos secos para você no mundo.</li>
+                <li>Muitos anos de vida, mas só se vc quiser é claro.</li>
+            </ul>
+            <p>Esperamos que você tenha um dia tão incrível quanto seu amigão ruan da cunha isabelis.</p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="button">Um presente especial pra você! (Não é vírus, confia)</a>
+        </div>
     </div>
 
     <script>
-        window.onload = function() {
+        const startButton = document.getElementById('start-button');
+        const startScreen = document.getElementById('start-screen');
+        const mainContent = document.getElementById('main-content');
+        const music = document.getElementById('background-music');
+
+        startButton.addEventListener('click', () => {
+            music.play();
+            startScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            initializeApp();
+        });
+
+        function initializeApp() {
             const canvas = document.getElementById('banguelaCanvas');
             const ctx = canvas.getContext('2d');
-
             const preto = '#1c1c1c';
             const verdeOlho = '#98ff98';
-
-            function drawArc(x, y, radius, startAngle, endAngle, color) {
-                ctx.beginPath();
-                ctx.arc(x, y, radius, startAngle, endAngle);
-                ctx.fillStyle = color;
-                ctx.fill();
-            }
-
-            function drawLine(moveToX, moveToY, lineToX, lineToY, color = preto) {
-                ctx.beginPath();
-                ctx.moveTo(moveToX, moveToY);
-                ctx.lineTo(lineToX, lineToY);
-                ctx.strokeStyle = color;
-                ctx.lineWidth = 4;
-                ctx.stroke();
-            }
-
-            drawArc(200, 180, 100, 0, 2 * Math.PI, preto);
-            ctx.beginPath();
-            ctx.ellipse(155, 160, 30, 45, Math.PI / 1.5, 0, 2 * Math.PI);
-            ctx.fillStyle = verdeOlho;
-            ctx.fill();
-            drawArc(165, 170, 10, 0, 2 * Math.PI, 'black');
-            ctx.beginPath();
-            ctx.ellipse(245, 160, 30, 45, Math.PI / -1.5, 0, 2 * Math.PI);
-            ctx.fillStyle = verdeOlho;
-            ctx.fill();
-            drawArc(235, 170, 10, 0, 2 * Math.PI, 'black');
-            ctx.beginPath();
-            ctx.moveTo(110, 120);
-            ctx.lineTo(130, 40);
-            ctx.lineTo(170, 100);
-            ctx.fillStyle = preto;
-            ctx.fill();
-            ctx.beginPath();
-            ctx.moveTo(290, 120);
-            ctx.lineTo(270, 40);
-            ctx.lineTo(230, 100);
-            ctx.fillStyle = preto;
-            ctx.fill();
-            drawLine(190, 220, 185, 230, '#4a4a4a');
-            drawLine(210, 220, 215, 230, '#4a4a4a');
-            ctx.beginPath();
-            ctx.arc(200, 240, 40, 0.2 * Math.PI, 0.8 * Math.PI);
-            ctx.strokeStyle = '#4a4a4a';
-            ctx.lineWidth = 3;
-            ctx.stroke();
+            function drawArc(x, y, r, sA, eA, c) { ctx.beginPath(); ctx.arc(x, y, r, sA, eA); ctx.fillStyle = c; ctx.fill(); }
+            function drawLine(mX, mY, lX, lY, c = preto) { ctx.beginPath(); ctx.moveTo(mX, mY); ctx.lineTo(lX, lY); ctx.strokeStyle = c; ctx.lineWidth = 4; ctx.stroke(); }
+            drawArc(200, 180, 100, 0, 7, preto);
+            ctx.beginPath(); ctx.ellipse(155, 160, 30, 45, Math.PI / 1.5, 0, 7); ctx.fillStyle = verdeOlho; ctx.fill();
+            drawArc(165, 170, 10, 0, 7, 'black');
+            ctx.beginPath(); ctx.ellipse(245, 160, 30, 45, Math.PI / -1.5, 0, 7); ctx.fillStyle = verdeOlho; ctx.fill();
+            drawArc(235, 170, 10, 0, 7, 'black');
+            ctx.beginPath(); ctx.moveTo(110, 120); ctx.lineTo(130, 40); ctx.lineTo(170, 100); ctx.fillStyle = preto; ctx.fill();
+            ctx.beginPath(); ctx.moveTo(290, 120); ctx.lineTo(270, 40); ctx.lineTo(230, 100); ctx.fillStyle = preto; ctx.fill();
+            drawLine(190, 220, 185, 230, '#4a4a4a'); drawLine(210, 220, 215, 230, '#4a4a4a');
+            ctx.beginPath(); ctx.arc(200, 240, 40, 0.2 * Math.PI, 0.8 * Math.PI); ctx.strokeStyle = '#4a4a4a'; ctx.lineWidth = 3; ctx.stroke();
             
+            // Posicionamento aleatório das imagens
             const images = document.querySelectorAll('.random-image');
             const container = document.querySelector('.container');
             const containerRect = container.getBoundingClientRect();
-
             images.forEach(image => {
-                const top = Math.random() * (window.innerHeight - 200); 
+                const top = Math.random() * (window.innerHeight - 200);
                 image.style.top = `${top}px`;
-
-                
                 if (Math.random() > 0.5) {
-                    const left = Math.random() * (containerRect.left - 150);
-                    image.style.left = `${left}px`;
+                    const left = Math.random() * (containerRect.left - 160);
+                    image.style.left = `${left < 0 ? 0 : left}px`;
                 } else {
-                    const right = Math.random() * (window.innerWidth - containerRect.right - 150);
-                    image.style.right = `${right}px`;
+                    const right = Math.random() * (window.innerWidth - containerRect.right - 160);
+                    image.style.right = `${right < 0 ? 0 : right}px`;
                 }
-                
-                const rotation = Math.random() * 90 - 45; 
+                const rotation = Math.random() * 90 - 45;
                 image.style.transform = `rotate(${rotation}deg)`;
             });
         };
